@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# try to close gracefully
+echo "$0: trying to stop MySQL gracefully..."
+mysqladmin -u root shutdown
+echo "$0: done."
+
+# make container die (send TERM to pid 1 -init-)
+# protect this script to executing twice cause a graceful
+# s6 shutdown will call this finish script again.
+if test "$#" -ne 0; then
+	kill -15 1
+fi
