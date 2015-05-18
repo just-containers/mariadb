@@ -1,4 +1,4 @@
-FROM quay.io/glerchundi/base:0.1.3
+FROM quay.io/justcontainers/base:v0.7.2
 MAINTAINER Gorka Lerchundi Osa <glertxundi@gmail.com>
 
 ##
@@ -20,8 +20,12 @@ RUN apt-get-min update                 && \
 # root filesystem
 COPY rootfs /
 
-# volumes
-VOLUME [ "/volumes/data", "/volumes/log" ]
+# s6-fdholderd active by default
+RUN s6-rmrf /etc/s6/services/s6-fdholderd/down
+
+# data & log volumes
+VOLUME [ "/var/lib/mysql" ]
+VOLUME [ "/var/log/mysql-error-logs", "/var/log/mysql-general-logs", "/var/log/mysql-slow-query-logs" ]
 
 ##
 ## CLEANUP

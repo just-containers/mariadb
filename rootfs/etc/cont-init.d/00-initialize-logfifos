@@ -1,0 +1,5 @@
+#!/usr/bin/execlineb -P
+
+if { logutil-newfifo -o mysql /var/run/s6/mysql-error-log-fifo }
+if { logutil-newfifo -o mysql /var/run/s6/mysql-general-log-fifo }
+if { logutil-newfifo -o mysql /var/run/s6/mysql-slow-query-log-fifo }

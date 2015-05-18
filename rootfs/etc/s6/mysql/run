@@ -1,5 +1,0 @@
-#!/bin/sh
-exec 2>&1
-exec /usr/sbin/mysqld                          \
-       --general-log-file=/dev/stdout          \
-       --log-error=/dev/stderr

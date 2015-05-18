@@ -1,0 +1,13 @@
+#!/usr/bin/execlineb -P
+multisubstitute
+{
+  define efifo /var/run/s6/mysql-error-log-fifo
+  define gfifo /var/run/s6/mysql-general-log-fifo
+  define sqfifo /var/run/s6/mysql-slow-query-log-fifo
+}
+redirfd -wnb 2 ${efifo}
+trap -x
+{
+  term { mysqladmin -u root shutdown }
+}
+mysqld --general-log-file=${gfifo} --slow-query-log-file=${sqfifo}
