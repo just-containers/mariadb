@@ -27,6 +27,9 @@ RUN s6-rmrf /etc/s6/services/s6-fdholderd/down
 VOLUME [ "/var/lib/mysql" ]
 VOLUME [ "/var/log/mysql-error-logs", "/var/log/mysql-general-logs", "/var/log/mysql-slow-query-logs" ]
 
+# ports
+EXPOSE 3306
+
 ##
 ## CLEANUP
 ##
