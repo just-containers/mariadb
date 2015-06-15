@@ -1,2 +1,2 @@
 #!/usr/bin/execlineb -P
-logutil-service /var/run/s6/mysql-general-log-fifo /var/log/mysql-general-logs
+logutil-service -f /var/run/s6/mysql-general-log-fifo /var/log/mysql-general-logs
