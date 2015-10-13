@@ -1,4 +1,4 @@
-FROM quay.io/justcontainers/base:v0.8.1
+FROM quay.io/justcontainers/base:v0.11.0
 MAINTAINER Gorka Lerchundi Osa <glertxundi@gmail.com>
 
 ##
@@ -29,9 +29,3 @@ VOLUME [ "/var/log/mysql-error-logs", "/var/log/mysql-general-logs", "/var/log/m
 
 # ports
 EXPOSE 3306
-
-##
-## CLEANUP
-##
-
-RUN apt-cleanup
